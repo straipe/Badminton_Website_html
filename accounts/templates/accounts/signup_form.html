@@ -1,33 +1,5 @@
 {% extends "accounts/layout.html" %}
-{% load bootstrap4 %}
 
 {% block content %}
-<div class="card mx-auto" style="max-width:1000px">
-    {% if form_title %}
-    <div class="card-header">
-        {{ form_title }}
-    </div>
-    {% endif %}
-    <div class="card-body">
-        {% if form %}
-            <form action="" method="POST" enctype="multipart/form-data">
-                {% csrf_token %}
-                <div class="row align-items-center mx-auto">
-                    {% bootstrap_form form %}
-                </div>
-                <div class="my-3">
-                    {% buttons %}
-                        <button type="submit" class="btn btn-primary">
-                            {{ submit_label|default:"Submit"}}
-                        </button>
-                    {% endbuttons %}
-                </div>
-            </form>
-        {% else %}
-        <div class="alert alert-danger">
-            form 객체를 지정해주세요.
-        </div>
-        {% endif %}
-    </div>
-</div>
+    {% include "_form.html" with form_title="회원가입" submit_label="회원가입" %}
 {% endblock %}
