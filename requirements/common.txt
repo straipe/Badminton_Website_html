@@ -1,0 +1,7 @@
+django~=4.2.3
+python~=3.8.17
+
+django-bootstrap4
+pillow
+django-pydenticon
+easy-thumnails

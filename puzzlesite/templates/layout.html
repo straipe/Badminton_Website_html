@@ -1,0 +1,54 @@
+{% load static %}
+<!doctype html>
+<html>
+<head>
+<meta charset='utf-8' />
+<title>콕콕: 배드민턴 매칭 플랫폼</title>
+
+<script src="https://kit.fontawesome.com/f62348ac1e.js" crossorigin="anonymous"></script>
+<link rel="stylesheet" href="{% static "bootstrap-5.3.0-dist/css/bootstrap.min.css" %}" />
+<script src="{% static "jquery-3.7.0.min.js" %}"></script>
+<script src="{% static "bootstrap-5.3.0-dist/js/bootstrap.min.js" %}"></script>
+<style>
+    @import url('https://fonts.googleapis.com/css2?family=Cute+Font&display=swap');
+
+    .cu-font{
+        font-family: 'Cute Font', cursive;
+        font-size: 20px;
+    }
+    
+    a{
+        text-decoration-line: none;
+    }
+
+</style>
+
+</head>
+<body>
+
+{% if messages %}
+  {% for message in messages %}
+  <div class="alert alert-{{message.tags}}">
+    {{message}}
+  </div>
+  {% endfor %}
+{% endif %}
+<div class="container">
+    <div class="d-flex flex-row align-items-center mx-auto p-1 px-md-4 mb-3 bg-white" style="max-width:1000px">
+        <a href="/" class="my-0 me-md-auto">
+            <img src="{% static "logo2.png" %}" alt="Badminton" style="width: 100px; height: 60px;" />
+        </a>
+        <nav class="my-2 my-md-0 me-md-3">
+          <a class="p-2 text-dark cu-font" href="accounts/signup/">회원가입</a>
+        </nav>
+        <a class="p-2 me-3 cu-font" href="#">로그인</a>
+        <a class="text-dark" href="#">
+            <i class="fa-solid fa-ellipsis"></i>
+        </a>
+    </div>
+    {% block content %}
+    {% endblock %}
+</div>
+
+</body>
+</html>
