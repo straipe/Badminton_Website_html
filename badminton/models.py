@@ -37,7 +37,6 @@ class Review(models.Model):
         bad = 1, "아쉬워요"
 
     author = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
-    match = models.ForeignKey(Match, on_delete = models.CASCADE)
     message = models.TextField()
     satisfaction = models.IntegerField(choices=ScoreChoices.choices)
     created_at = models.DateTimeField(auto_now_add=True)
