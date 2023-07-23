@@ -1,0 +1,33 @@
+{% extends "accounts/layout.html" %}
+
+{% load bootstrap4 %}
+
+{% block content %}
+    <div class="card mx-auto" style="max-width:1000px">
+        <div class="card-header">
+            <p class="cu-font text-center"> 마이페이지 </p>
+        </div>
+        <div class="card-body">
+            <div class="p-3" style="text-align:center;">
+                <img src="{{ user.avatar_url }}" class="rounded-circle" style="width: 160px;" />
+            </div>
+            <p class="cu-font text-center"> {{ user.username }} </p>
+            <p class="cu-font text-center"> {{ user.rating }} </p>
+            <p class="cu-font text-center"> {{ user.name }} </p>
+            <p class="cu-font text-center"> {{ user.gender }} </p>
+            <p class="cu-font text-center"> {{ user.birth_date }} </p>
+            <p class="cu-font text-center"> {{ user.odds }} </p>
+            <button type="button" onclick="location.href='{% url "profile_edit" %}'" 
+                class="btn btn-primary col-sm-12 mb-3">
+                프로필 수정
+            </button>
+            <button type="button" onclick="location.href='{% url "password_change" %}'" 
+                class="btn btn-danger col-sm-12 mb-3">
+                비밀번호 변경
+            </button>
+        </div>
+        <div class="card-footer">
+            
+        </div>
+    </div>
+{% endblock %}

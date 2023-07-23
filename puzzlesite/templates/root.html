@@ -1,4 +1,5 @@
 {% extends "layout.html" %}
+{% load static %}
 
 {% block content %}
 <div class="container">
@@ -31,7 +32,37 @@
     </div>
 </div>
 
-<div class="row align-items-center mx-auto bg-white" style="max-width:1000px">
-    Hello badminton.
+<div class="row align-items-center mx-auto bg-white mt-3" style="max-width:1000px">
+    <div class="section">
+        <input type="radio" name="slide" id="slide01" checked>
+        <input type="radio" name="slide" id="slide02">
+        <input type="radio" name="slide" id="slide03">
+
+        <div class="slidewrap">
+            <ul class="slidelist">
+                <li>
+                    <a>
+                        <label for="slide03" class="left"></label>
+                        <img src="{% static "con3.PNG" %}" height="500px"/>
+                        <label for="slide02" class="right"></label>
+                    </a>
+                </li>
+                <li>
+                    <a>
+                        <label for="slide01" class="left"></label>
+                        <img src="{% static "con2.PNG" %}" height="500px"/>
+                        <label for="slide03" class="right"></label>
+                    </a>
+                </li>
+                <li>
+                    <a>
+                        <label for="slide02" class="left"></label>
+                        <img src="{% static "con1.PNG" %}" height="500px"/>
+                        <label for="slide01" class="right"></label>
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </div>
 </div>
 {% endblock %}

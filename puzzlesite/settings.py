@@ -60,6 +60,7 @@ INSTALLED_APPS = [
     "easy_thumbnails",
     # Locals apps
     "accounts",
+    "badminton",
 ]
 
 MIDDLEWARE = [
@@ -158,3 +159,15 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
 INTERNAL_IPS = ['127.0.0.1']
+
+#NAVER EMAIL
+
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = 'smtp.naver.com'
+EMAIL_HOST_USER = 'straipe'
+EMAIL_HOST_PASSWORD = get_secret("EMAIL_HOST_PASSWORD")
+EMAIL_USE_TLS = True
+EMAIL_PORT = 587
+DEFAULT_FROM_MAIL = 'straipe'
+
+WELCOME_EMAIL_SENDER = 'straipe@naver.com'
