@@ -14,6 +14,7 @@ class Match(models.Model):
     manager = models.ForeignKey(settings.AUTH_USER_MODEL, related_name = 'manage_match_set', 
                                 on_delete=models.DO_NOTHING)
     title = models.CharField(max_length=30)
+    photo = models.ImageField(upload_to='badminton/match/%Y/%m/%d')
     address = models.CharField(max_length=50)
     match_day = models.DateTimeField(blank=True)
     match_time = models.IntegerField()

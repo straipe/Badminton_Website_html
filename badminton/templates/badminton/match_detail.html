@@ -1,0 +1,24 @@
+{% extends "badminton/layout.html" %}
+{% load bootstrap4 %}
+{% load thumbnail %}
+
+{% block content %}
+<div class="card mx-auto" style="max-width:1000px">
+    <div class="card-header">
+        <p class="cu-font" style="font-size:30px">
+            {{ match.title }}
+        </p>
+    </div>
+    <div class="card-body">
+        <img src="{{ match.photo.url }}"/>
+        </br>
+        <p class="cu-font" style="font-size:20px">
+            랭크: {{ match.match_rank }}</br>
+            주소: {{ match.address }}</br>
+            {{ match.match_day }}</br>
+            {{ match.match_time }}분 진행</br>
+            비용: {{ match.cost }}
+        </p>
+    </div>
+</div>
+{% endblock %}

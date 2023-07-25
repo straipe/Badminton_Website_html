@@ -1,12 +1,15 @@
 {% extends "layout.html" %}
 {% load static %}
+{% load thumbnail %}
+{% load humanize %}
+{% load bootstrap4 %}
 
 {% block content %}
 <div class="container">
     <div class="row align-items-center mx-auto bg-white border-bottom box-shadow" style="max-width:1000px">
         <div class="col" style="height:30px;">
             <p class="text-center">
-                <a class="text-dark cu-font" href="#">퍼즐매치</a>
+                <a class="text-dark cu-font" href="{% url 'badminton:match_new' %}">매치등록</a>
             </p>
         </div>
         <div class="col" style="height:30px;">
@@ -63,6 +66,44 @@
                 </li>
             </ul>
         </div>
+    </div>
+</div>
+
+<div class="mt-5">
+    <p class="cu-font text-center" style="font-size:30px">추천 매치</p>
+    <hr class="mx-auto" style="max-width:1000px"></hr>
+</div>
+
+<div class="row align-items-center mx-auto bg-white mt-3" style="max-width:1000px">
+    {% for match in match_list %}
+        <div class="col-sm-3 mb-3">
+            <img src="{% thumbnail match.photo 230x200 crop %}" alt="{{ match.title }}" />
+            <p class="cu-font text-center" style="font-size:25px">{{ match.title }}</p>
+            <p class="cu-font text-center" style="font-size:30px">{{ match.match_day }}</p>
+            <p class="cu-font text-center" style="font-size:20px">{{ match.match_rank }}</p>
+        </div>
+    {% empty %}
+        매치가 없습니다.
+    {% endfor %}
+</div>
+
+<div class="mt-5">
+    <p class="cu-font text-center" style="font-size:30px">참여 후기</p>
+    <hr class="mx-auto" style="max-width:1000px"></hr>
+</div>
+
+<div class="row align-items-center mx-auto bg-white mt-3" style="max-width:1000px">
+    {% for review in review_list %}
+        {% include "badminton/_review.html" %}
+    {% empty %}
+        후기가 없습니다.
+    {% endfor %}
+    <div>
+        <form id="review_form" action="{% url "badminton:review_new" %}" method="POST">
+            {% csrf_token %}
+            {% bootstrap_form review_form %} 
+            <input type="submit" value="후기 등록" class="btn btn-primary col-sm-12 mt-3"/>
+        </form> 
     </div>
 </div>
 {% endblock %}

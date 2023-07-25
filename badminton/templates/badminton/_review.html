@@ -1,0 +1,43 @@
+{% load humanize %}
+<div class="comment">
+    <div class="row">
+        <div class="col-sm-2">
+            <p class="cu-font" style="font-size:20px">
+                {{ review.author }}님</br>
+                <small class="text-body-secondary">{{ review.created_at|naturaltime }}</small>
+            </p>
+        </div>
+        <div class="col-sm-8">
+            {{ review.message }}
+        </div>
+        <div class="col-sm-2">
+            <script>
+                temp = {{ review.satisfaction }};
+                switch (temp){
+                    case 1:
+                        for(var count = 0; count < 1; count +=1 ){
+                            document.write("<i class='fa-solid fa-star'></i>");
+                        }
+                        for(var count = 0; count < 2; count +=1 ){
+                            document.write("<i class='fa-regular fa-star'></i>");
+                        }
+                        break;
+                    case 2:
+                        for(var count = 0; count < 2; count +=1 ){
+                            document.write("<i class='fa-solid fa-star'></i>");
+                        }
+                        for(var count = 0; count < 1; count +=1 ){
+                            document.write("<i class='fa-regular fa-star'></i>");
+                        }
+                        break;
+                    case 3:
+                        for(var count = 0; count < 3; count +=1 ){
+                            document.write("<i class='fa-solid fa-star'></i>");
+                        }
+                        break;
+                }
+            </script>
+        </div>
+    </div>
+</div>
+<hr class="mx-auto mt-3 mb-3" style="max-width:1000px"></hr>
